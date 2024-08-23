@@ -1,0 +1,57 @@
+<h1>Editar Assinatura</h1>
+
+<%= form_with(model: @assinatura, local: true) do |form| %>
+  <% if @assinatura.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assinatura.errors.count, "erro") %> proibiu esta assinatura de ser salva:</h2>
+
+      <ul>
+        <% @assinatura.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :cliente_id, "Cliente" %>
+    <%= form.collection_select :cliente_id, Cliente.all, :id, :nome, prompt: "Selecione um Cliente", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :servidor_id, "Servidor" %>
+    <%= form.collection_select :servidor_id, Servidor.all, :id, :nome, prompt: "Selecione um Servidor", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :data_inicio, "Data de Início" %>
+    <%= form.date_select :data_inicio, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :data_vencimento, "Data de Vencimento" %>
+    <%= form.date_select :data_vencimento, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :valor, "Valor" %>
+    <%= form.number_field :valor, step: 0.01, class: 'form-control', placeholder: "Digite o valor da assinatura" %>
+  </div>
+ 
+  <div class="form-group">
+    <%= form.label :status, "Status" %>
+    <%= form.text_field :status, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :observacoes, "Observações" %>
+    <%= form.text_area :observacoes, class: 'form-control' %>
+  </div>
+  <br>
+  
+  <div class="actions">
+    <%= form.submit "Salvar Assinatura", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Voltar', assinaturas_path, class: 'btn btn-secondary mt-3' %>

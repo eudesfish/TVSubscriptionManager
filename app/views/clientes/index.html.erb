@@ -1,0 +1,40 @@
+<div id="clientes">
+<p style="color: green"><%= notice %></p>
+
+<h1>Lista de Clientes</h1>
+
+<%= form_tag(clientes_path, method: :get, class: "form-inline mb-4") do %>
+  <div class="form-group mx-sm-3 mb-2">
+    <%= label_tag :search, "Buscar Cliente", class: "sr-only" %>
+    <%= text_field_tag :search, params[:search], placeholder: "Digite o nome ou cidade", class: "form-control" %>
+  </div>
+  <%= submit_tag "Buscar", class: "btn btn-primary mb-2" %>
+<% end %>
+<%= link_to "Novo Cliente", new_cliente_path, class: "btn btn-success mt-4" %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>Cidade</th>
+      <th>Observações</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @clientes.each do |cliente| %>
+      <tr>
+        <td><%= cliente.nome %></td>
+        <td><%= cliente.telefone %></td>
+        <td><%= cliente.cidade %></td>
+        <td><%= cliente.observacoes %></td>
+        <td>
+          <%= link_to "Mostrar", cliente, class: "btn btn-sm btn-info" %>
+          <%= link_to "Editar", edit_cliente_path(cliente), class: "btn btn-sm btn-warning" %>
+          <%= link_to "Excluir", cliente, method: :delete, data: { confirm: "Você tem certeza?" }, class: "btn btn-sm btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

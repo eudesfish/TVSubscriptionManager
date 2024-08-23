@@ -1,0 +1,120 @@
+@import 'bootstrap';
+@import 'jquery-ui';
+/*
+ *= require_tree .
+ *= require_self
+ */
+header{
+  background-color: #343a40;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  .logo {
+    img {
+      height: 50px;
+    }
+  }
+}
+
+// Estilo global para o layout
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+  }
+  
+  // Menu Lateral Esquerda
+  #sidebarMenu {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #343a40;
+  }
+  
+  #sidebarMenu .nav-link {
+    color: #807c7c;
+    padding: 15px;
+    font-size: 16px;
+  }
+  
+  #sidebarMenu .nav-link:hover,
+  #sidebarMenu .nav-link.active {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+  
+  // Conteúdo Principal
+  main {
+    margin-left: 250px;
+    padding: 20px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #343a40;
+  }
+  
+  .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: rgba(0, 123, 255, 0.05);
+  }
+ 
+  
+  // Estilos específicos para o dashboard
+  #dashboard {
+    h1 {
+      color: #007bff;
+      margin-bottom: 30px;
+    }
+  
+    .statistics {
+      font-size: 24px;
+      color: #6c757d;
+    }
+  }
+  
+  
+  // Estilos específicos para clientes
+  #clientes {
+    h1 {
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+  
+    .table {
+      margin-top: 20px;
+    }
+  }
+  
+  
+  // Estilos específicos para servidores
+  #servidors {
+    h1 {
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+  
+    .table {
+      margin-top: 20px;
+    }
+  }
+  
+  
+    th {
+      background-color: #f2f2f2;
+    }
+
+    #assinaturas {
+        h1 {
+          color: #007bff;
+          margin-bottom: 20px;
+        }
+      
+        .table {
+          margin-top: 20px;
+        }
+      }
+      
+  

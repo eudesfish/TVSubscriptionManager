@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Servidores</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Tipo</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @servidors.each do |servidor| %>
+      <tr>
+        <td><%= servidor.nome %></td>
+        <td><%= servidor.tipo %></td>
+        <td>
+          <%= link_to "Mostrar", servidor, class: "btn btn-sm btn-info" %>
+          <%= link_to "Editar", edit_servidor_path(servidor), class: "btn btn-sm btn-warning" %>
+          <%= link_to "Excluir", servidor, method: :delete, data: { confirm: "Você tem certeza?" }, class: "btn btn-sm btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to "Novo Servidor", new_servidor_path, class: "btn btn-success mt-4" %>

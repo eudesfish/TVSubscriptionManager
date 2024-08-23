@@ -1,0 +1,23 @@
+@import "bootstrap";
+@import "custom";
+@import "~bootstrap/scss/bootstrap";
+
+.navbar {
+    background-color: #343a40; /* Cor de fundo */
+  }
+  
+  .navbar-brand {
+    color: #fff;
+  
+    &:hover {
+      color: #ddd;
+    }
+  }
+  
+  .nav-link {
+    color: #fff;
+  
+    &:hover {
+      color: #ddd;
+    }
+  }

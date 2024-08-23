@@ -1,0 +1,41 @@
+<h1>Financeiro</h1>
+
+<div class="container">
+  <div class="alert alert-info">
+    <h2>Entradas por Mês:</h2>
+    <ul class="list-group">
+      <% @pagamentos_por_mes.each do |mes, total| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= link_to mes, financeiro_path(mes: mes.to_date.strftime("%Y-%m")) %>
+          <span class="badge bg-primary rounded-pill">R$ <%= total %></span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <% if @pagamentos_filtrados.any? %>
+    <div class="alert alert-warning mt-4">
+      <h2>Detalhes do Mês Selecionado:</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Data de Início</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pagamentos_filtrados.each do |assinatura| %>
+            <tr>
+              <td><%= assinatura.cliente.nome %></td>
+              <td><%= assinatura.data_inicio %></td>
+              <td>R$ <%= assinatura.valor %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <p class="text-muted mt-4">Selecione um mês para ver os detalhes dos pagamentos.</p>
+  <% end %>
+</div>

@@ -1,0 +1,10 @@
+<h1>Detalhes da Assinatura</h1>
+
+<%= render @assinatura %>
+
+<div>
+  <%= button_to "Excluir assinatura", @assinatura, method: :delete, class: 'btn btn-primary' %>
+  <br>
+  <%= link_to 'Voltar', assinaturas_path, class: 'btn btn-secondary' %>
+</div>
+

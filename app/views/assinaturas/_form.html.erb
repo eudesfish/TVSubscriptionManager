@@ -1,0 +1,39 @@
+<%= form_with(model: @assinatura, local: true) do |form| %>
+  <% if @assinatura.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assinatura.errors.count, "error") %> proibiu que esta assinatura fosse salva:</h2>
+      <ul>
+        <% @assinatura.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :cliente_id, "Cliente", class: "form-label" %>
+    <%= form.collection_select :cliente_id, Cliente.all, :id, :nome, prompt: "Selecione um Cliente", class: "form-select2" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :servidor_id, "Servidor", class: "form-label" %>
+    <%= form.collection_select :servidor_id, Servidor.all, :id, :nome, prompt: "Selecione um Servidor", class: "form-select2" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :data_inicio, "Data de Início", class: "form-label" %>
+    <%= form.date_field :data_inicio, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :valor, "Valor", class: "form-label" %>
+    <%= form.number_field :valor, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :observacoes, "Observações", class: "form-label" %>
+    <%= form.text_area :observacoes, class: "form-control" %>
+  </div>
+
+  <%= form.submit "Salvar Assinatura", class: "btn btn-primary" %>
+<% end %>

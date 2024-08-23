@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @servidor %>
+
+<div>
+  <%= link_to "Edit this servidor", edit_servidor_path(@servidor) %> |
+  <%= link_to "Back to servidors", servidors_path %>
+
+  <%= button_to "Excluir servidor", @servidor, method: :delete %>
+</div>

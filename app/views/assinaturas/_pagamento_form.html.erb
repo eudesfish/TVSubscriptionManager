@@ -1,0 +1,9 @@
+<%= form_with(model: @assinatura, url: pagamento_assinatura_path(@assinatura), method: :post) do |f| %>
+  <div class="form-group">
+    <%= f.label :data_inicio, "Data de Pagamento" %>
+    <%= f.date_field :data_inicio, class: 'form-control' %>
+  </div>
+
+  <%= f.submit "Confirmar Pagamento", class: "btn btn-primary" %>
+<% end %>
+

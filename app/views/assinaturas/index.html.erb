@@ -1,0 +1,47 @@
+<div id="assinaturas">
+  <h1>Assinaturas</h1>
+
+  <%= link_to 'Nova Assinatura', new_assinatura_path, class: 'btn btn-primary' %>
+
+  <table class="table table-striped mt-4">
+    <thead>
+      <tr>
+        <th><%= sort_link(@q, :numero_registro, "Número de Registro") %></th>
+        <th><%= sort_link(@q, 'cliente.nome', "Nome") %></th>
+        <th><%= sort_link(@q, 'cliente.telefone', "Telefone") %></th>
+        <th><%= sort_link(@q, 'servidor.nome', "Servidor") %></th>
+        <th><%= sort_link(@q, :data_inicio, "Data de Início") %></th>
+        <th><%= sort_link(@q, :data_vencimento, "Data de Vencimento") %></th>
+        <th><%= sort_link(@q, :status, "Status") %></th>
+        <th><%= sort_link(@q, :observacoes, "Observações") %></th>
+        <th><%= sort_link(@q, :valor, "Valor") %></th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @assinaturas.each do |assinatura| %>
+        <tr>
+          <td><%= assinatura.numero_registro %></td>
+          <td><%= assinatura.cliente.nome %></td>
+          <td><%= assinatura.cliente.telefone %></td>
+          <td><%= assinatura.servidor.nome %></td>
+          <td><%= assinatura.data_inicio %></td>
+          <td><%= assinatura.data_vencimento %></td>
+          <td><%= assinatura.status %></td>
+          <td><%= assinatura.observacoes %></td>
+          <td><%= number_to_currency(assinatura.valor, unit: 'R$', separator: ',', delimiter: '.') %></td>
+          <td>
+            <%= link_to 'Informar Pagamento', pagamento_assinatura_path(assinatura), method: :get, class: 'btn btn-success' %>
+          </td>
+          <td>
+            <%= link_to 'Editar', edit_assinatura_path(assinatura), class: 'btn btn-warning' %>
+          </td>
+          <td>
+            <%= link_to 'Excluir', assinatura, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-sm btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,37 @@
+<div id="dashboard">
+  <h1>Dashboard</h1>
+
+  <div class="container">
+    <!-- Total de Clientes -->
+    <div class="alert alert-info">
+      <h2>Total de Clientes: <%= @clientes_count %></h2>
+    </div>
+
+    <!-- Clientes com Pagamentos a Vencer -->
+    <div class="alert alert-warning">
+      <h2>Clientes com Pagamentos a Vencer em 3 Dias: <%= @clientes_vencimento_count %></h2>
+      <% if @clientes_vencimento.any? %>
+        <table class="table table-striped mt-4">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Telefone</th>
+              <th>Data de Vencimento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @clientes_vencimento.each do |cliente| %>
+              <tr>
+                <td><%= cliente.nome %></td>
+                <td><%= cliente.telefone %></td>
+                <td><%= cliente.assinaturas.where('data_vencimento <= ?', 3.days.from_now).pluck(:data_vencimento).first %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p class="text-muted">Nenhum cliente com pagamentos a vencer em 3 dias.</p>
+      <% end %>
+    </div>
+  </div>
+</div>

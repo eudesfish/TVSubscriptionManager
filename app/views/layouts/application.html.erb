@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gerenciamento de Cliente - TV por Assinatura</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
+        <%= image_tag('logo.png', alt: 'Logo da Empresa', height: '50') %>
+      </a>
+      <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+          <% if user_signed_in? %>
+            <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'nav-link px-3' %>
+          <% else %>
+            <%= link_to 'Login', new_user_session_path, class: 'nav-link px-3' %>
+          <% end %>
+        </div>
+      </div>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Menu Lateral Esquerda -->
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="position-sticky pt-5"> <!-- Ajuste de padding para afastar o menu -->
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <%= link_to 'Dashboard', dashboard_path, class: 'nav-link active' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Clientes', clientes_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Servidores', servidors_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Assinaturas', assinaturas_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Financeiro', financeiro_path, class: 'nav-link' %>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Conteúdo Principal -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
